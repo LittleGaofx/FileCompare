@@ -1,5 +1,7 @@
+#input folder
 $dir1 = ".\new"
 $dir2 = ".\old"
+#output folder
 $dir3 = ".\OutputData"
 
 $hashes1 = Get-ChildItem -Path $dir1 -Recurse | Get-FileHash
@@ -10,4 +12,5 @@ $hashes1 | Where-Object { $_.Hash -notin $hashes2.Hash } | ForEach-Object {
     Write-Host "New file: $file "
     Copy-Item $($file.FullName) $dir3
 }
+
 pause
